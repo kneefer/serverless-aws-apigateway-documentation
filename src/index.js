@@ -17,7 +17,7 @@ class ServerlessAWSDocumentation {
     Object.assign(this, documentation());
     Object.assign(this, downloadDocumentation);
 
-    this.customVars = this.serverless.variables.service.custom;
+    this.customVars = this.serverless.service.custom;
     const naming = this.serverless.providers.aws.naming;
     this.getMethodLogicalId = naming.getMethodLogicalId.bind(naming);
     this.normalizePath = naming.normalizePath.bind(naming);
@@ -113,7 +113,7 @@ class ServerlessAWSDocumentation {
   }
 
   beforeDeploy() {
-    this.customVars = this.serverless.variables.service.custom;
+    this.customVars = this.serverless.service.custom;
     if (!(this.customVars && this.customVars.documentation)) return;
 
     if (this.customVars.documentation.swagger) {
